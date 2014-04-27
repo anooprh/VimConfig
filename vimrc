@@ -62,6 +62,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"  configure Vim to watch for changes in your .vimrc and automatically reload
+"  the config
+augroup myvimrchooks
+    au!
+    autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen Plugin
 "
@@ -87,3 +94,5 @@ autocmd vimenter * if !argc() | NERDTree | endif
 map <C-p> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Nerd Commenter toggle comment
+nmap <C-m>  <leader>c<space> 
