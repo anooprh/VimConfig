@@ -92,7 +92,7 @@ let g:auto_save = 1
 autocmd vimenter * if !argc() | NERDTree | endif
 " map a Ctrl p to open NERDTree
 map <C-p> :NERDTreeToggle<CR>
-
+nmap <C-r> :NERDTreeFind<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nerd Commenter toggle comment
+" Nerd Commenter toggle comment, ctrl M to toggle comment
 nmap <C-m>  <leader>c<space> 
