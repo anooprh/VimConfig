@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/anoop/Workspace'
+let g:netrw_dirhist_2='/home/anoop/Workspace/HaskellSTL'
+let g:netrw_dirhist_3='/home/anoop/Workspace/HaskellSTL/spikes'
