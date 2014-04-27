@@ -8,7 +8,7 @@ let mapleader = ","
 :set nobackup
 :set nowb
 :set noswapfile
-
+:set noundofile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab settings 
 :set tabstop=4
@@ -73,6 +73,15 @@ vnoremap <tab> %
 :set si "Smart indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" configuring vim to map the escape sequences to their Alt combinations
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <A-j> mz:m+<cr>`z
@@ -89,6 +98,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Insert a line  and go back to normal mode by holding Shift
+nmap <A-O> O<Esc>
+nmap <A-o> o<Esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "This will disable the arrow keys while you’re in normal mode 
 "to help you learn to use hjkl.
