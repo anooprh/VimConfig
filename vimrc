@@ -46,7 +46,6 @@ let mapleader = ","
 :set backspace=indent,eol,start
 :set laststatus=2
 :set relativenumber
-:set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching / Moving Related
