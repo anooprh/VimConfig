@@ -97,6 +97,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+
+" commands needed to resize your splits
+" leader 1 to shrink, leader 2 to expand
+noremap <leader>2 :vertical resize +5<CR>
+noremap <leader>1 :vertical resize -5<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert a line  and go back to normal mode by holding Shift
 nmap <A-O> O<Esc>
