@@ -50,8 +50,8 @@ let mapleader = ","
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching / Moving Related
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 :set ignorecase
 :set smartcase
 :set gdefault
@@ -123,6 +123,7 @@ augroup myvimrchooks
     autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
 
+let autoreadargs={'autoread':1}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen Plugin
 "
@@ -149,5 +150,4 @@ map <C-p> :NERDTreeToggle<CR>
 nmap <C-o> :NERDTreeFind<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerd Commenter toggle comment, ctrl M to toggle comment
-" nmap <C-m>  <leader>c<space> 
-" Actually Enter Key in normal does that job already, so disabling it
+nmap <leader>cx  <leader>c<space> 
