@@ -1,6 +1,20 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Anoop Hallur's vimrc file, updated 28 April, 2014
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pathogen Plugin
+"
+" https://github.com/tpope/vim-pathogen
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+" Reload .vimrc on the fly, somehow not working
+"nmap <leader>so :so ~/.vimrc<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 " Change Leader Key
 let mapleader = ","
 
@@ -26,6 +40,9 @@ let mapleader = ","
 " prevents some security exploits having to do with modelines in files
 :set modelines=0
 
+
+" Toggle spell-checking
+map <silent> <F10> :set nospell!<cr>:set nospell?<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " No idea what I am doing here. Blame
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/ if something goes
@@ -46,7 +63,7 @@ let mapleader = ","
 :set backspace=indent,eol,start
 :set laststatus=2
 :set relativenumber
-
+:set title                " change the terminal's title
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching / Moving Related
 "nnoremap / /\v
@@ -61,6 +78,18 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Solarized color scheme settings
+"syntax enable
+"set background=dark
+"colorscheme solarized
+
+"clearing highlighted search
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+" For when you forget to sudo.. Really Write the file.
+cmap w!! w !sudo tee % >/dev/null
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  makes Vim handle long lines correctly
 :set wrap "Automatically wrap text
@@ -104,19 +133,19 @@ noremap <leader>2 :vertical resize +5<CR>
 noremap <leader>1 :vertical resize -5<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert a line  and go back to normal mode by holding Shift
-nmap <A-O> O<Esc>
+nmap <A-S-o> O<Esc>
 nmap <A-o> o<Esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "This will disable the arrow keys while you’re in normal mode 
 "to help you learn to use hjkl.
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,15 +158,18 @@ augroup END
 
 let autoreadargs={'autoread':1}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen Plugin
-"
-" https://github.com/tpope/vim-pathogen
-
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" easier increment/decrement of numbers in file
+nnoremap + <C-a>
+nnoremap - <C-x>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Tab realted shortcuts
+noremap <A-t> <C-W>T " Opens a split in new tab
+noremap <A-PageUP> gT
+noremap <A-PageDown> gt
+set showtabline=2 "Always show tab bar"
+set tabpagemax=100 "Maximum tabs open. . If I open more than 100 tabs, I need 
+                   " to see a psychiatrist
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto Save Plugin
 
 " enable AutoSave on Vim startup
@@ -152,6 +184,11 @@ autocmd vimenter * if !argc() | NERDTree | endif
 " map a Ctrl p to open NERDTree
 map <C-p> :NERDTreeToggle<CR>
 nmap <C-o> :NERDTreeFind<CR>
+let g:nerdtree_tabs_open_on_console_startup=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerd Commenter toggle comment, ctrl M to toggle comment
 nmap <leader>cx  <leader>c<space> 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Most Recently opened files plugin
+noremap <leader>e :CtrlP<CR>
