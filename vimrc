@@ -11,7 +11,7 @@ syntax on
 filetype plugin indent on
 
 " Reload .vimrc on the fly, somehow not working
-"nmap <leader>so :so ~/.vimrc<CR>
+nmap <leader>sz :so ~/.vimrc<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -191,4 +191,9 @@ nmap <leader>cx  <leader>c<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Most Recently opened files plugin
-noremap <leader>e :CtrlP<CR>
+noremap <leader>e :CtrlPMRU<CR>
+noremap <leader>r :CtrlP<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Session saving plugins
+nnoremap <leader>s :SaveSession!  getcwd().'/.session.vim'<CR> 
+let g:session_autosave = 'no'
