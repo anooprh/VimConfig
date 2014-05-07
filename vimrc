@@ -195,5 +195,7 @@ noremap <leader>e :CtrlPMRU<CR>
 noremap <leader>r :CtrlP<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Session saving plugins
-nnoremap <leader>s :SaveSession!  getcwd().'/.session.vim'<CR> 
+"autocmd VimLeave * NERDTreeClose
+let g:session_directory = getcwd()
+nnoremap <leader>s :SaveSession! .session<CR> 
 let g:session_autosave = 'no'
