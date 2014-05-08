@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Anoop Hallur's vimrc file, updated 28 April, 2014
+"Anoop Hallur's vimrc file, updated 07 May, 2014
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen Plugin
@@ -78,6 +78,21 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" With the following (for example, in vimrc), you can visually select text then
+" press ~ to convert the text to UPPER CASE, then to lower case, then to Title
+" Case. Keep pressing ~ until you get the case you want.
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Solarized color scheme settings
@@ -133,7 +148,7 @@ noremap <leader>2 :vertical resize +5<CR>
 noremap <leader>1 :vertical resize -5<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert a line  and go back to normal mode by holding Shift
-nmap <A-S-o> O<Esc>
+nmap <A-O> O<Esc>
 nmap <A-o> o<Esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "This will disable the arrow keys while you’re in normal mode 
@@ -150,7 +165,7 @@ nnoremap j gj
 nnoremap k gk
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  configure Vim to watch for changes in your .vimrc and automatically reload
-"  the config
+"  the config --> Not working agian
 augroup myvimrchooks
     au!
     autocmd bufwritepost .vimrc source ~/.vimrc
@@ -164,11 +179,13 @@ nnoremap - <C-x>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Tab realted shortcuts
 noremap <A-t> <C-W>T " Opens a split in new tab
-noremap <A-PageUP> gT
+noremap <A-PageUP> gT " Alt{PgUp , Pg-Down} for moving around tabs
 noremap <A-PageDown> gt
 set showtabline=2 "Always show tab bar"
 set tabpagemax=100 "Maximum tabs open. . If I open more than 100 tabs, I need 
                    " to see a psychiatrist
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ENTER PLUGIN CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto Save Plugin
 
@@ -190,12 +207,11 @@ let g:nerdtree_tabs_open_on_console_startup=1
 nmap <leader>cx  <leader>c<space> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Most Recently opened files plugin
+"CtrlP --> Most Recently opened files plugin
 noremap <leader>e :CtrlPMRU<CR>
 noremap <leader>r :CtrlP<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Session saving plugins
-"autocmd VimLeave * NERDTreeClose
 let g:session_directory = getcwd()
 nnoremap <leader>s :SaveSession! .session<CR> 
 let g:session_autosave = 'no'
