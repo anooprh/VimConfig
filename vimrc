@@ -215,3 +215,6 @@ noremap <leader>r :CtrlP<CR>
 let g:session_directory = getcwd()
 nnoremap <leader>s :SaveSession! .session<CR> 
 let g:session_autosave = 'no'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Airline settings
+"let g:airline#extensions#tabline#enabled = 1
